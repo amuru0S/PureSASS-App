@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;  /* By placing inherit in universal selector (*), w eare saying that inherit the value of box-sizing = border-box whereever it is specified in all the selectors through out the code */
+   
+}
+                        /* 10px is user specified, 16px is the default browser font-size value */
+html {   
+    // this defines what 1 rem is               /* 10/16 = 0.625 ==> 0.625/100 = 62.5*/
+    font-size: 62.5%; /* with the base of this 62.5% whatever the user specifies the browser font, it automatically takes the specified value and changes the pixel size accordingly */
+}
+
+body{
+    box-sizing: border-box;
+}

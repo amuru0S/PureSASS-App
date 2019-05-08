@@ -1,0 +1,8 @@
+{
+    "scss.lint.argumentsInColorFunction": "error",
+    "css.lint.argumentsInColorFunction": "error",
+    "less.lint.argumentsInColorFunction": "error",
+    "less.lint.hexColorLength": "error",
+    "scss.lint.hexColorLength": "error",
+    "css.lint.hexColorLength": "error"
+}

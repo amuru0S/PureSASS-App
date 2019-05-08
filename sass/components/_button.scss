@@ -1,0 +1,101 @@
+/* below 'link' is a Psudo class. Psudo class are a special state of a selector.
+Here link is the state of a button selector. We use psudo classes under special condition*/
+
+.btn {
+
+    &:link,
+    &:visited{
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem; /* 15=top & bottom, 40=left & right */
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s; /* if you don't know or want all the properties to be animated then we mention 'all' and then the duration of the animation */
+        position: relative;
+        font-size: $default-font-size;
+    }
+    
+    &:hover{
+        transform: translateY(-0.3rem); /* here on hovering the button should move up, so y axix, generarlly y axis moves from tob to bottom, in this case it is moving from bottom to top so we are taking '-ve' value */
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /* x=0, y=10*/
+            
+    &::after{
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0; /* if we want to applying fading, we use opacity=0 means this hides the thing which you want to hide*/
+        
+    }
+    }
+    
+    /* when we click the button then the psudo class will be active */
+    &:active{
+        transform: translateY(-0.1rem); /* -1px relates to link state, not to hover state */
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+    
+    &--white{  /* white is a modifier as we refer modifiers as -- */
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+
+    &--green{  /* white is a modifier as we refer modifiers as -- */
+        // background-color: $color-primary;
+        background-image: linear-gradient(to right bottom, $color-secondary-dark, $color-primary-light, $color-tertiary-dark);
+        color: $color-white;
+    
+        &::after{
+            background-color: $color-primary;
+        }
+    }
+    
+    /* 'after' is a psudo element, which acts as an virtual element
+    right after we select it. here 'after' is a child to the actual button, so it behaves exactly as button does 
+    and we have to place this 'after' button behind the actual button */
+    
+    &::after{
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1; /* it defines the position of the element if they are one on top of another. so -1 is definitely behind the button. since it is hidden we cannot see it*/
+        transition: all 0.4s;
+    }
+
+    &--animated{
+        animation: moveInBottom 1s ease-out 0.75s;
+        animation-fill-mode: backwards; /* this automatically applies styles of 0% in moveInBottom before the animation start*/
+    }
+    
+}
+
+.btn-text{
+    &:link,
+    &:visited{
+        font-size: $default-font-size;;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+    }
+
+    &:hover{
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+        transition: all .2s;
+    }
+
+    &:active{
+        box-shadow: 0 0.5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}
